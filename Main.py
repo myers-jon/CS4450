@@ -9,8 +9,7 @@ class new_grammarPrintListener(new_grammarListener):
     def enterParse(self, ctx):
         if ctx.block():
             print("\n----------------------------------")
-            print("Parse Successful!\n")
-            print("Operations:")
+            print("Operations:\n")
 
 
     def enterDefinition(self, ctx):
@@ -36,7 +35,7 @@ class new_grammarPrintListener(new_grammarListener):
             print(", value: ",end='')
             print(varvalue)
         else:
-            print("expression. ", end='')
+            print("expression.")
 
 
     def enterPrint_out(self, ctx):
@@ -56,9 +55,7 @@ class new_grammarPrintListener(new_grammarListener):
             print(f)
 
 
-
 def main(argv):
-
     lexer = new_grammarLexer(StdinStream())
     tokens = CommonTokenStream(lexer)
     parser = new_grammarParser(tokens)
@@ -67,6 +64,7 @@ def main(argv):
     printer = new_grammarPrintListener()
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
+    print("\n----------------------------------\n")
 
 
 if __name__ == '__main__':
