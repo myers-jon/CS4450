@@ -5,15 +5,55 @@ from new_grammarParser import new_grammarParser
 from new_grammarListener import new_grammarListener
 
 
-
 class new_grammarPrintListener(new_grammarListener):
     def enterParse(self, ctx):
-        print("> %s" % ctx.block())
+        if ctx.block():
+            print("\n----------------------------------")
+            print("Parse Successful!")
+
+    def enterDefinition(self, ctx):
+        print(ctx.VARNAME(), end='')
+        print(" defined as value. ", end='')
+        val = ctx.expression().value()
+        vartype = ""
+        varvalue = ""
+
+        if val:
+            if val.VARNAME():
+                vartype = "varname"
+                varvalue = val.VARNAME()
+            if val.INT():
+                vartype = "int"
+                varvalue = val.INT()
+            if val.FLOAT():
+                vartype = "float"
+                varvalue = val.FLOAT()
+        
+        print("vartype: ", end='')
+        print(vartype, end='')
+        print(", value: ",end='')
+        print(varvalue)
+
+
+    def enterPrint_out(self, ctx):
+        # prints a value
+        vn = ctx.value().VARNAME()
+        i = ctx.value().INT()
+        f = ctx.value().FLOAT()
+        
+        if vn: 
+            print("printing varname: ", end='')
+            print(vn)
+        elif i:
+            print("printing int: ", end='')
+            print(i)
+        elif f:
+            print("printing float: ", end='')
+            print(f)
 
 
 
 def main(argv):
-
 
     lexer = new_grammarLexer(StdinStream())
     tokens = CommonTokenStream(lexer)

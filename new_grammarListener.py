@@ -35,12 +35,66 @@ class new_grammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by new_grammarParser#operation.
+    def enterOperation(self, ctx:new_grammarParser.OperationContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#operation.
+    def exitOperation(self, ctx:new_grammarParser.OperationContext):
+        pass
+
+
     # Enter a parse tree produced by new_grammarParser#definition.
     def enterDefinition(self, ctx:new_grammarParser.DefinitionContext):
         pass
 
     # Exit a parse tree produced by new_grammarParser#definition.
     def exitDefinition(self, ctx:new_grammarParser.DefinitionContext):
+        pass
+
+
+    # Enter a parse tree produced by new_grammarParser#expression.
+    def enterExpression(self, ctx:new_grammarParser.ExpressionContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#expression.
+    def exitExpression(self, ctx:new_grammarParser.ExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by new_grammarParser#arithmetic.
+    def enterArithmetic(self, ctx:new_grammarParser.ArithmeticContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#arithmetic.
+    def exitArithmetic(self, ctx:new_grammarParser.ArithmeticContext):
+        pass
+
+
+    # Enter a parse tree produced by new_grammarParser#op.
+    def enterOp(self, ctx:new_grammarParser.OpContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#op.
+    def exitOp(self, ctx:new_grammarParser.OpContext):
+        pass
+
+
+    # Enter a parse tree produced by new_grammarParser#print_out.
+    def enterPrint_out(self, ctx:new_grammarParser.Print_outContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#print_out.
+    def exitPrint_out(self, ctx:new_grammarParser.Print_outContext):
+        pass
+
+
+    # Enter a parse tree produced by new_grammarParser#value.
+    def enterValue(self, ctx:new_grammarParser.ValueContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#value.
+    def exitValue(self, ctx:new_grammarParser.ValueContext):
         pass
 
 

@@ -2,24 +2,52 @@
 grammar new_grammar;
 
 
-parse : block EOF;
+/*
+  Parser rules
+*/
 
-block : statement*;
+parse : (block)? EOF;
 
-statement : definition WS* ;  // | arithmetic WS* | assignment WS*;
+block : (statement NL+)* statement NL*;
 
-definition : VAR WS* '=' WS* NUMBER;
+statement : operation | print_out;
 
-WS : '\n' | ' ';
+operation : WS* definition WS* ;  // | WS* arithmetic WS* | assignment WS*;
 
-NUMBER : INT | FLOAT;
+definition : VARNAME WS* ASSIGN WS* expression;
+expression : arithmetic | value;
+
+arithmetic : value WS* op WS* value;
+op : PLUS | MINUS | MULT | DIV | MOD;
+
+
+print_out : PRNT value RPAREN WS*;
+value : (VARNAME | INT | FLOAT); 
+
+
+
+
+/*
+  Lexer rules
+*/
 
 INT : [0-9]+ ;
 
 FLOAT : [0-9]+ '.' [0-9]* ;
 
-VAR : [a-z]+ ;
+VARNAME : ('_'|'A'..'Z'|'a'..'z') ('_'|'A'..'Z'|'0'..'9'|'a'..'z')* ;
 
+WS : ' ';
+ASSIGN : '=';
+NL : '\n';
+PRNT : 'print(';
+LPAREN : '(';
+RPAREN : ')';
+PLUS : '+';
+MINUS : '-';
+MULT : '*';
+DIV : '/';
+MOD : '%';
 
 
 
