@@ -1,4 +1,4 @@
-# Generated from grammar.g4 by ANTLR 4.9.3
+# Generated from new_grammar.g4 by ANTLR 4.9.3
 from antlr4 import *
 from io import StringIO
 import sys
@@ -32,7 +32,7 @@ def serializedATN():
         return buf.getvalue()
 
 
-class java_pythonLexer(Lexer):
+class new_grammarLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -57,7 +57,7 @@ class java_pythonLexer(Lexer):
 
     ruleNames = [ "T__0", "WS", "NUMBER", "INT", "FLOAT", "VAR" ]
 
-    grammarFileName = "grammar.g4"
+    grammarFileName = "new_grammar.g4"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)
