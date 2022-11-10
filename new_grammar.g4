@@ -1,5 +1,5 @@
 // define a grammar called java-python
-grammar java_python;
+grammar new_grammar;
 
 
 parse : block EOF;
