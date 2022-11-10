@@ -62,6 +62,24 @@ class new_grammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by new_grammarParser#assignment.
+    def enterAssignment(self, ctx:new_grammarParser.AssignmentContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#assignment.
+    def exitAssignment(self, ctx:new_grammarParser.AssignmentContext):
+        pass
+
+
+    # Enter a parse tree produced by new_grammarParser#assop.
+    def enterAssop(self, ctx:new_grammarParser.AssopContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#assop.
+    def exitAssop(self, ctx:new_grammarParser.AssopContext):
+        pass
+
+
     # Enter a parse tree produced by new_grammarParser#arithmetic.
     def enterArithmetic(self, ctx:new_grammarParser.ArithmeticContext):
         pass

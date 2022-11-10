@@ -12,13 +12,16 @@ block : (statement NL+)* statement NL*;
 
 statement : operation | print_out;
 
-operation : WS* definition WS* ;  // | WS* arithmetic WS* | assignment WS*;
+operation : WS* definition WS* | WS* assignment WS*;
 
 definition : VARNAME WS* ASSIGN WS* expression;
 expression : arithmetic | value;
 
+assignment : VARNAME WS* assop WS* value;
+assop : DIVASSIGN | MULTASSIGN | ADDASSIGN | SUBASSIGN;
+
 arithmetic : value WS* op WS* value;
-op : PLUS | MINUS | MULT | DIV | MOD;
+op : ADD | SUB | MULT | DIV | MOD;
 
 
 print_out : PRNT value RPAREN WS*;
@@ -38,13 +41,17 @@ FLOAT : [0-9]+ '.' [0-9]* ;
 VARNAME : ('_'|'A'..'Z'|'a'..'z') ('_'|'A'..'Z'|'0'..'9'|'a'..'z')* ;
 
 WS : ' ';
+DIVASSIGN : '/=';
+MULTASSIGN : '*=';
+ADDASSIGN : '+=';
+SUBASSIGN : '-=';
 ASSIGN : '=';
 NL : '\n';
 PRNT : 'print(';
 LPAREN : '(';
 RPAREN : ')';
-PLUS : '+';
-MINUS : '-';
+ADD : '+';
+SUB : '-';
 MULT : '*';
 DIV : '/';
 MOD : '%';

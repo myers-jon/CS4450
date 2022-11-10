@@ -37,6 +37,34 @@ class new_grammarPrintListener(new_grammarListener):
         else:
             print("expression.")
 
+    
+    def enterAssignment(self, ctx):
+        vn = ctx.value().VARNAME()
+        i = ctx.value().INT()
+        f = ctx.value().FLOAT()
+
+        val = vn if vn else (i if i else (f if f else ""))
+        if ctx.assop().DIVASSIGN():
+            print("dividing ",end='')
+            print(ctx.VARNAME(),end='')
+            print(" by ",end='')
+            print(val)
+        if ctx.assop().MULTASSIGN():
+            print("multiplying ",end='')
+            print(ctx.VARNAME(),end='')
+            print(" by ",end='')
+            print(val)
+        if ctx.assop().ADDASSIGN():
+            print("adding ",end='')
+            print(val,end='')
+            print(" to ",end='')
+            print(ctx.VARNAME())
+        if ctx.assop().SUBASSIGN():
+            print("subtracting ",end='')
+            print(val,end='')
+            print(" from ",end='')
+            print(ctx.VARNAME())
+
 
     def enterPrint_out(self, ctx):
         # prints a value
