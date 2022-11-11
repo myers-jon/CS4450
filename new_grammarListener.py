@@ -80,21 +80,30 @@ class new_grammarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by new_grammarParser#arithmetic.
-    def enterArithmetic(self, ctx:new_grammarParser.ArithmeticContext):
+    # Enter a parse tree produced by new_grammarParser#arith.
+    def enterArith(self, ctx:new_grammarParser.ArithContext):
         pass
 
-    # Exit a parse tree produced by new_grammarParser#arithmetic.
-    def exitArithmetic(self, ctx:new_grammarParser.ArithmeticContext):
+    # Exit a parse tree produced by new_grammarParser#arith.
+    def exitArith(self, ctx:new_grammarParser.ArithContext):
         pass
 
 
-    # Enter a parse tree produced by new_grammarParser#op.
-    def enterOp(self, ctx:new_grammarParser.OpContext):
+    # Enter a parse tree produced by new_grammarParser#arith1.
+    def enterArith1(self, ctx:new_grammarParser.Arith1Context):
         pass
 
-    # Exit a parse tree produced by new_grammarParser#op.
-    def exitOp(self, ctx:new_grammarParser.OpContext):
+    # Exit a parse tree produced by new_grammarParser#arith1.
+    def exitArith1(self, ctx:new_grammarParser.Arith1Context):
+        pass
+
+
+    # Enter a parse tree produced by new_grammarParser#arith2.
+    def enterArith2(self, ctx:new_grammarParser.Arith2Context):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#arith2.
+    def exitArith2(self, ctx:new_grammarParser.Arith2Context):
         pass
 
 

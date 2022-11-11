@@ -1,5 +1,6 @@
 import sys
 from antlr4 import *
+from antlr4.tree.Trees import Trees
 from new_grammarLexer import new_grammarLexer
 from new_grammarParser import new_grammarParser
 from new_grammarListener import new_grammarListener
@@ -89,6 +90,7 @@ def main(argv):
     parser = new_grammarParser(tokens)
     parser.errorHandler = BailErrorStrategy()
     tree = parser.parse()
+    print(Trees.toStringTree(tree, None, parser))
     printer = new_grammarPrintListener()
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
