@@ -19,6 +19,8 @@ operation : WS* definition WS*
 
 definition : VARNAME WS* ASSIGN WS* expression ;
 
+print_out : WS* PRNT WS* expression WS* RPAREN WS* ;
+
 expression : arith 
            | value 
            ;
@@ -46,7 +48,6 @@ arith2 : arith2 WS* MULT WS* arith2
        ;
 
 
-print_out : PRNT value RPAREN WS* ;
 
 value : VARNAME 
       | INT 
