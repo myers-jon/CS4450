@@ -44,7 +44,7 @@ class new_grammarPrintListener(new_grammarListener):
 
     
     def enterAssignment(self, ctx):
-        vn = ctx.value().VARNAME()
+        vn = ctx.assop().value().VARNAME()
         i = ctx.value().INT()
         f = ctx.value().FLOAT()
 
