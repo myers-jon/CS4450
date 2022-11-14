@@ -53,6 +53,15 @@ class new_grammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by new_grammarParser#print_out.
+    def enterPrint_out(self, ctx:new_grammarParser.Print_outContext):
+        pass
+
+    # Exit a parse tree produced by new_grammarParser#print_out.
+    def exitPrint_out(self, ctx:new_grammarParser.Print_outContext):
+        pass
+
+
     # Enter a parse tree produced by new_grammarParser#expression.
     def enterExpression(self, ctx:new_grammarParser.ExpressionContext):
         pass
@@ -104,15 +113,6 @@ class new_grammarListener(ParseTreeListener):
 
     # Exit a parse tree produced by new_grammarParser#arith2.
     def exitArith2(self, ctx:new_grammarParser.Arith2Context):
-        pass
-
-
-    # Enter a parse tree produced by new_grammarParser#print_out.
-    def enterPrint_out(self, ctx:new_grammarParser.Print_outContext):
-        pass
-
-    # Exit a parse tree produced by new_grammarParser#print_out.
-    def exitPrint_out(self, ctx:new_grammarParser.Print_outContext):
         pass
 
 

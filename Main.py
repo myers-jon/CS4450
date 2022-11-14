@@ -72,9 +72,13 @@ class new_grammarPrintListener(new_grammarListener):
 
     def enterPrint_out(self, ctx):
         # prints a value
-        vn = ctx.value().VARNAME()
-        i = ctx.value().INT()
-        f = ctx.value().FLOAT()
+        if not ctx.expression().value():
+            print("printing arithmetic")
+            return
+
+        vn = ctx.expression().value().VARNAME()
+        i = ctx.expression().value().INT()
+        f = ctx.expression().value().FLOAT()
         
         if vn: 
             print("printing varname: ", end='')
