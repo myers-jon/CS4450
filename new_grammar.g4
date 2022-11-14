@@ -21,6 +21,7 @@ definition : VARNAME WS* ASSIGN WS* expression ;
 
 expression : arith 
            | value 
+           | boolean
            ;
 
 assignment : VARNAME WS* assop WS* value ;
@@ -45,6 +46,8 @@ arith2 : arith2 WS* MULT WS* arith2
        | value
        ;
 
+boolean : BOOL
+	;
 
 print_out : PRNT value RPAREN WS* ;
 
@@ -64,6 +67,8 @@ FLOAT : [0-9]+ '.' [0-9]* ;
 
 VARNAME : ('_'|'A'..'Z'|'a'..'z') ('_'|'A'..'Z'|'0'..'9'|'a'..'z')* ;
 
+BOOL : 'True' |  'Fasle' ;
+
 WS : ' ' ;
 DIVASSIGN : '/=' ;
 MULTASSIGN : '*=' ;
@@ -79,6 +84,5 @@ SUB : '-' ;
 MULT : '*' ;
 DIV : '/' ;
 MOD : '%' ;
-
 
 

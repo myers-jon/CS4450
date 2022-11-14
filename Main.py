@@ -19,7 +19,7 @@ class new_grammarPrintListener(new_grammarListener):
         val = ctx.expression().value()
         vartype = "-"
         varvalue = "-"
-
+        
         if val:
             print("value. ", end='')
             if val.VARNAME():
@@ -31,6 +31,9 @@ class new_grammarPrintListener(new_grammarListener):
             if val.FLOAT():
                 vartype = "float"
                 varvalue = val.FLOAT()
+            if val.BOOL():
+            	vartype = "boolean"
+            	var.value = val.BOOL()
             print("vartype: ", end='')
             print(vartype, end='')
             print(", value: ",end='')
