@@ -1,5 +1,4 @@
-Ryan could not get antlr to work on his computer, he is still trying to get it set up
-we worked over discord on these problems and the approach, so I have done all the pushes this time
+## Install/Run Instructions
 
 We used an Ubunutu environment with antlr 4.9.3 and python3 for this program.
 Our approach requires the Java RTE and the correct antlr version jar file.
@@ -49,6 +48,44 @@ This will produce an output conisting of a parse tree and input type.
 Incorrect syntax will produce an error.
 
 
+
+## Deliverable 1
+
+Ryan could not get antlr to work on his computer, he is still trying to get it set up
+we worked over discord on these problems and the approach, so I have done all the pushes this time
+
+ARITHMETIC OPERATORS (\*, /, +, -, %)
+
+For these operators we need to establish order of operations. We can do this in context free grammar
+by indicating an order through having separate functions. For example, the first layer will check for
+the least of the orders, leaving the remaining blocks of code to be evaluated first. In this way, the
+order of operations is maintained.
+
+So we have three functions for three groups of order of operations. We want the modulus symbol (%) to 
+be evaluated lastly, so we check for it first within the function. Then we check for (+, -). Then for
+(\*, /). 
+
+We also want to evaluate whole strings of operations. Because of this, we include recursion within the
+order that we are evaluating. Each CFG recurses within itself, then passes to a higher order of 
+operation.
+
+
+VARIABLE DEFINITIONS (VARNAME = ?)
+
+To define variables, we first need to establish a variable which specifies which characters can make up
+the name of the variable (VARNAME in our CFG). In python, a variable can contain numbers, lowercase
+letters, uppercase letters, and underscores, but cannot start with a number. We have implemented this
+in the CFG.
+
+
+ASSIGNMENT OPERATORS (=, +=, -=, /=, \*=) 
+
+We must have data types of which to assign the variable. In this case, we have the datatypes INT,
+FLOAT, and VARNAME. So, a variable can be assigned to a float, int, or the value of another variable.
+We have chosen to omit strings in this case, since they are not in the project description and not
+relevant to the operations we have implemented - they would just add unneeded complexity.
+
+We have implemented the CFG in this way. All assignment operators
 
 
 
