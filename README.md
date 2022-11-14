@@ -38,12 +38,12 @@ Valid syntax for the parser starts with a variable name that cannot begin with a
 Press the enter key between definitions. Use ^D to parse the input and exit the program.
 
 For example:
-W = True
-X = 2 
-Y = 2 + 2
-Z = foo
-Z1 = bar
-^D
+W = True  <br />
+X = 2  <br />
+Y = 2 + 2  <br />
+Z = foo  <br />
+Z1 = bar  <br />
+^D  <br />
 
 This will produce an output conisting of a parse tree and input type.
 Incorrect syntax will produce an error.
