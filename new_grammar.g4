@@ -45,7 +45,8 @@ arith2 : arith2 WS* MULT WS* arith2
        | value
        ;
 
-boolean : BOOL ;
+boolean : BOOL 
+	;
 
 value : VARNAME 
       | INT 
