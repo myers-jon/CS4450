@@ -13,11 +13,9 @@ statement : operation
           | print_out 
           ;
 
-operation : WS* definition WS* 
-          | WS* assignment WS* 
-          ;
+operation : WS* assignment WS* ;
 
-definition : VARNAME WS* ASSIGN WS* expression ;
+assignment : VARNAME WS* assop WS* expression ;
 
 print_out : WS* PRNT WS* expression WS* RPAREN WS* ;
 
@@ -26,12 +24,11 @@ expression : arith
            | boolean
            ;
 
-assignment : VARNAME WS* assop WS* value ;
-
 assop : DIVASSIGN 
       | MULTASSIGN 
       | ADDASSIGN 
       | SUBASSIGN 
+      | ASSIGN
       ;
 
 arith : arith WS* MOD WS* arith
@@ -48,13 +45,11 @@ arith2 : arith2 WS* MULT WS* arith2
        | value
        ;
 
-boolean : BOOL
-	;
-
+boolean : BOOL ;
 
 value : VARNAME 
       | INT 
-      | FLOAT 
+      | FLOAT
       ; 
 
 

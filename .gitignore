@@ -1,1 +1,8 @@
 __pycache__
+new_grammar.interp
+new_grammarLexer.interp
+new_grammarLexer.py
+new_grammarLexer.tokens
+new_grammarListener.py
+new_grammarParser.py
+new_grammar.tokens
