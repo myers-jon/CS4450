@@ -68,7 +68,7 @@ FLOAT : [0-9]+ '.' [0-9]* ;
 
 VARNAME : ('_'|'A'..'Z'|'a'..'z') ('_'|'A'..'Z'|'0'..'9'|'a'..'z')* ;
 
-BOOL : 'True' |  'Fasle' ;
+BOOL : 'True' |  'False' ;
 
 WS : ' ' ;
 DIVASSIGN : '/=' ;
