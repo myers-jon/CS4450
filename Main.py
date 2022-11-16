@@ -15,11 +15,22 @@ class new_grammarPrintListener(new_grammarListener):
 
 
     def enterAssignment(self, ctx):
-        vn = ctx.assop().value().VARNAME()
-        i = ctx.value().INT()
-        f = ctx.value().FLOAT()
+        expr = ctx.expression()
+        val = "boolean"
+        a = expr.arith()
+        val = "arithmetic" if a else val
+        
+        if expr.value():
+            vn = expr.value().VARNAME()
+            i = expr.value().INT()
+            f = expr.value().FLOAT()
+            val = "value" if vn else ("INT" if i else ("FLOAT" if f else val))
 
-        val = vn if vn else (i if i else (f if f else ""))
+        if ctx.assop().ASSIGN():
+            print("declaring ",end='')
+            print(ctx.VARNAME(),end='')
+            print(" as ",end='')
+            print(val)
         if ctx.assop().DIVASSIGN():
             print("dividing ",end='')
             print(ctx.VARNAME(),end='')

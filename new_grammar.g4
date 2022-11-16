@@ -13,28 +13,23 @@ statement : operation
           | print_out 
           ;
 
-operation : WS* definition WS* 
-          | WS* assignment WS* 
-          ;
+operation : WS* assignment WS* ;
 
-definition : VARNAME WS* ASSIGN WS* expression ;
+assignment : VARNAME WS* assop WS* expression ;
 
 print_out : WS* PRNT WS* expression WS* RPAREN WS* ;
 
-expression : boolean
+expression : boolean 
            | value 
            | arith
            ;
-
-assignment : VARNAME WS* assop WS* value ;
 
 assop : DIVASSIGN 
       | MULTASSIGN 
       | ADDASSIGN 
       | SUBASSIGN 
+      | ASSIGN
       ;
-
-boolean : BOOL ;
 
 arith : arith WS* MOD WS* arith
       | arith1
@@ -50,6 +45,7 @@ arith2 : arith2 WS* MULT WS* arith2
        | value
        ;
 
+boolean : BOOL ;
 
 value : VARNAME 
       | INT 
@@ -61,13 +57,13 @@ value : VARNAME
   Lexer rules
 */
 
-BOOL : 'True' |  'False' ;
-
 INT : [0-9]+ ;
 
 FLOAT : [0-9]+ '.' [0-9]* ;
 
 VARNAME : ('_'|'A'..'Z'|'a'..'z') ('_'|'A'..'Z'|'0'..'9'|'a'..'z')* ;
+
+BOOL : 'True' |  'False' ;
 
 WS : ' ' ;
 DIVASSIGN : '/=' ;
@@ -84,4 +80,5 @@ SUB : '-' ;
 MULT : '*' ;
 DIV : '/' ;
 MOD : '%' ;
+
 
