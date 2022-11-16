@@ -14,35 +14,6 @@ class new_grammarPrintListener(new_grammarListener):
             print("Operations:\n")
 
 
-    def enterDefinition(self, ctx):
-        print(ctx.VARNAME(), end='')
-        print(" defined as ", end='')
-        val = ctx.expression().value()
-        vartype = "-"
-        varvalue = "-"
-        
-        if val:
-            print("value. ", end='')
-            if val.VARNAME():
-                vartype = "varname"
-                varvalue = val.VARNAME()
-            if val.INT():
-                vartype = "int"
-                varvalue = val.INT()
-            if val.FLOAT():
-                vartype = "float"
-                varvalue = val.FLOAT()
-            if val.BOOL():
-            	vartype = "boolean"
-            	var.value = val.BOOL()
-            print("vartype: ", end='')
-            print(vartype, end='')
-            print(", value: ",end='')
-            print(varvalue)
-        else:
-            print("expression.")
-
-    
     def enterAssignment(self, ctx):
         vn = ctx.assop().value().VARNAME()
         i = ctx.value().INT()
