@@ -27,7 +27,16 @@ assop : DIVASSIGN
       | ASSIGN
       ;
 
-boolean : BOOL ;
+boolean : BOOL
+        | NOT boolean 
+        | BOOL AND boolean
+        | BOOL OR boolean
+        | expression boolop expression
+        ;
+
+boolop : 
+       | 
+       ;
 
 arith : arith WS* MOD WS* arith
       | arith1
@@ -55,6 +64,9 @@ value : VARNAME
 */
 
 BOOL : 'True' |  'False' ;
+AND : 'and' ;
+OR : 'or' ;
+NOT : 'not' ;
 
 INT : [0-9]+ ;
 
