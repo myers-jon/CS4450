@@ -34,8 +34,12 @@ boolean : BOOL
         | expression boolop expression
         ;
 
-boolop : 
-       | 
+boolop : LTE
+       | GTE
+       | LT
+       | GT
+       | EQUALS
+       | NTE
        ;
 
 arith : arith WS* MOD WS* arith
