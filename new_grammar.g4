@@ -24,6 +24,8 @@ expression : boolean
            | arith
            ;
 
+boolean : BOOL ;
+
 assop : DIVASSIGN 
       | MULTASSIGN 
       | ADDASSIGN 
@@ -44,8 +46,6 @@ arith2 : arith2 WS* MULT WS* arith2
        | arith2 WS* DIV WS* arith2
        | value
        ;
-
-boolean : BOOL ;
 
 value : VARNAME 
       | INT 
