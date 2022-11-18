@@ -15,7 +15,7 @@ operation : assignment WS* ;
 
 assignment : VARNAME WS* assop WS* expression ;
 
-expression : boolean
+expression : booln
            | value 
            | arith
            ;
@@ -27,11 +27,11 @@ assop : DIVASSIGN
       | ASSIGN
       ;
 
-boolean : BOOL
-        | NOT boolean 
-        | BOOL AND boolean
-        | BOOL OR boolean
-        | expression boolop expression
+booln : BOOL
+        | NOT expression
+        | BOOL AND expression
+        | BOOL OR expression
+        | boolop expression
         ;
 
 boolop : LTE
