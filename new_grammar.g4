@@ -9,15 +9,11 @@ parse : (block)? EOF ;
 
 block : (statement NL+)* statement NL* ;
 
-statement : operation 
-          | print_out 
-          ;
+statement : operation ;
 
 operation : assignment WS* ;
 
 assignment : VARNAME WS* assop WS* expression ;
-
-print_out : PRNT WS* expression WS* RPAREN WS* ;
 
 expression : boolean
            | value 
@@ -73,9 +69,6 @@ ADDASSIGN : '+=' ;
 SUBASSIGN : '-=' ;
 ASSIGN : '=' ;
 NL : '\n' ;
-PRNT : 'print(' ;
-LPAREN : '(' ;
-RPAREN : ')' ;
 ADD : '+' ;
 SUB : '-' ;
 MULT : '*' ;

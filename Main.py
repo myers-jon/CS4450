@@ -53,27 +53,6 @@ class new_grammarPrintListener(new_grammarListener):
             print(ctx.VARNAME())
 
 
-    def enterPrint_out(self, ctx):
-        # prints a value
-        if not ctx.expression().value():
-            print("printing arithmetic")
-            return
-
-        vn = ctx.expression().value().VARNAME()
-        i = ctx.expression().value().INT()
-        f = ctx.expression().value().FLOAT()
-        
-        if vn: 
-            print("printing varname: ", end='')
-            print(vn)
-        elif i:
-            print("printing int: ", end='')
-            print(i)
-        elif f:
-            print("printing float: ", end='')
-            print(f)
-
-
 def main(argv):
     lexer = new_grammarLexer(StdinStream())
     tokens = CommonTokenStream(lexer)
