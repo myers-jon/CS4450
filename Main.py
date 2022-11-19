@@ -17,10 +17,11 @@ class new_grammarPrintListener(new_grammarListener):
     def enterAssignment(self, ctx):
         expr = ctx.expression()
         val = "boolean"
-        a = expr.arith()
-        val = "arithmetic" if a else val
+        if expr:
+            a = expr.arith()
+            val = "arithmetic" if a else val
         
-        if expr.value():
+        if expr and expr.value():
             vn = expr.value().VARNAME()
             i = expr.value().INT()
             f = expr.value().FLOAT()

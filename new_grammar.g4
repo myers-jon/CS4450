@@ -7,36 +7,34 @@ grammar new_grammar ;
 
 parse : (block)? EOF ;
 
-block : (statement WS+)* statement WS* ;
+block : (statement WS*)* statement WS* ;
 
-statement : ifelseblock
-          | operation
+statement : operation
+          | ifelseblock
           ;
 
-ifelseblock : IF WS* conditional ':' WS* statement
-            | IF WS* conditional ':' WS* statement WS* ELSE ':' WS* statement
+ifelseblock : IF WS* booln ':' (WS* statement)+
+            | IF WS* booln ':' (WS* statement)+ WS* ELSE ':' (WS* statement)+
             ;
 
-operation : WS* ifelseblock WS*
-          | WS* assignment WS* 
-          ;
+operation : assignment WS* ;
 
-assignment : VARNAME WS* assop WS* expression ;
+assignment : VARNAME WS* assop WS* (expression | booln) ;
 
+booln : booln WS* AND WS* booln
+      | booln WS* OR WS* booln
+      | NOT WS* booln
+      | expression WS* boolop WS* expression
+      | booln WS* boolop WS* expression
+      | expression WS* boolop WS* booln
+      | booln WS* boolop WS* booln
+      | BOOL
+      | VARNAME
+      ;
 
-
-conditional :NOT WS* VARNAME WS* boolop WS* ( BOOL | value ) WS* conditional*
-            |NOT WS* VARNAME WS* 
-            |VARNAME WS* booln WS* conditional*
-            |VARNAME WS* boolop WS* BOOL WS* conditional*
-            |VARNAME WS* boolop WS* value WS* conditional*
-            ;
-
-expression : booln
-           | arith
-           | value 
+expression : value
+	   | arith
            ;
-    
 
 boolop : LTE
        | GTE
@@ -53,10 +51,10 @@ assop : DIVASSIGN
       | ASSIGN
       ;
 
-booln : BOOL WS* AND WS* conditional
-	| BOOL WS* OR WS* conditional
-	| BOOL
-        ;
+value : VARNAME 
+      | INT 
+      | FLOAT
+      ; 
 
 
 arith : arith WS* MOD WS* arith
@@ -74,15 +72,11 @@ arith2 : arith2 WS* MULT WS* arith2
        ;
 
 
-value : VARNAME 
-      | INT 
-      | FLOAT
-      ; 
-
 
 /*
   Lexer rules
 */
+
 IF : 'if' ;
 ELSE : 'else' ;
 BOOL : 'True' |  'False' ;
@@ -103,7 +97,8 @@ GT : '>' ;
 EQUALS : '==' ;
 NTE : '!=' ;
 
-WS : ' ' | '\t' | '\n' ;
+WS : ' ' | '\t' | '\n';
+NL : '\n';
 DIVASSIGN : '/=' ;
 MULTASSIGN : '*=' ;
 ADDASSIGN : '+=' ;
