@@ -7,18 +7,44 @@ grammar new_grammar ;
 
 parse : (block)? EOF ;
 
-block : (statement NL+)* statement NL* ;
+block : (statement WS+)* statement WS* ;
 
-statement : operation ;
+statement : ifelseblock
+          | operation
+          ;
 
-operation : assignment WS* ;
+ifelseblock : IF WS* conditional ':' WS* statement
+            | IF WS* conditional ':' WS* statement WS* ELSE ':' WS* statement
+            ;
 
-assignment : VARNAME WS* assop WS* expression ;
+operation : WS* ifelseblock WS*
+          | WS* assignment WS* 
+          ;
 
-expression : boolean
-           | value 
-           | arith
+assignment : VARNAME WS* boolop WS* expression
+           | VARNAME WS* assop WS* expression 
            ;
+
+
+
+conditional :VARNAME WS* booln WS* conditional*
+            |VARNAME WS* boolop WS* BOOL WS* conditional*
+            |VARNAME WS* boolop WS* value WS* conditional*
+            ;
+
+expression : booln
+           | arith
+           | value 
+           ;
+    
+
+boolop : LTE
+       | GTE
+       | LT
+       | GT
+       | EQUALS
+       | NTE
+       ;       
 
 assop : DIVASSIGN 
       | MULTASSIGN 
@@ -27,7 +53,12 @@ assop : DIVASSIGN
       | ASSIGN
       ;
 
-boolean : BOOL ;
+booln : BOOL WS* AND WS* conditional
+	| BOOL WS* OR WS* conditional
+	| NOT WS* ( BOOL | value ) WS* conditional*
+	| BOOL
+        ;
+
 
 arith : arith WS* MOD WS* arith
       | arith1
@@ -53,8 +84,12 @@ value : VARNAME
 /*
   Lexer rules
 */
-
+IF : 'if' ;
+ELSE : 'else' ;
 BOOL : 'True' |  'False' ;
+AND : 'and' ;
+OR : 'or' ;
+NOT : 'not' ;
 
 INT : [0-9]+ ;
 
@@ -62,13 +97,19 @@ FLOAT : [0-9]+ '.' [0-9]* ;
 
 VARNAME : ('_'|'A'..'Z'|'a'..'z') ('_'|'A'..'Z'|'0'..'9'|'a'..'z')* ;
 
-WS : ' ' ;
+LTE : '<=' ;
+GTE : '>=' ;
+LT : '<' ;
+GT : '>' ;
+EQUALS : '==' ;
+NTE : '!=' ;
+
+WS : ' ' | '\t' | '\n' ;
 DIVASSIGN : '/=' ;
 MULTASSIGN : '*=' ;
 ADDASSIGN : '+=' ;
 SUBASSIGN : '-=' ;
 ASSIGN : '=' ;
-NL : '\n' ;
 ADD : '+' ;
 SUB : '-' ;
 MULT : '*' ;
