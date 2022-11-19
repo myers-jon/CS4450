@@ -54,6 +54,7 @@ Incorrect syntax will produce an error.
 Ryan could not get antlr to work on his computer, he is still trying to get it set up
 we worked over discord on these problems and the approach, so I have done all the pushes this time
 
+
 ARITHMETIC OPERATORS (\*, /, +, -, %)
 
 For these operators we need to establish order of operations. We can do this in context free grammar
@@ -86,6 +87,52 @@ We have chosen to omit strings in this case, since they are not in the project d
 relevant to the operations we have implemented - they would just add unneeded complexity.
 
 We have implemented the CFG in this way. All assignment operators
+
+
+
+## Deliverable 2
+
+
+BOOLEAN ARITHMETIC OPERATORS
+
+First, we have defined a boolean type, which can either be True or False.
+
+We have implemented the operators >, <, <=, >=, ==, and != which test conditions between two numbers or variables. In the case of
+Python, booleans can also act as numbers (1 and 0) and are included in these operators. For example: True > False returns True, 
+since 1 > 0.
+
+
+BOOLEAN OPERATORS
+
+Then we have recursively implemented the boolean operators (and, or, not). These operators are built to only work on booleans,
+so the syntax 'not 3' would not be valid in our program.
+
+
+IF/ELSE BLOCKS
+
+We have also implemented basic if/else blocks. We have omitted elif as instructed by the professor. We have not specified the 
+exact number of tabs, as instructed by the professor. The if/else blocks can contain multiple lines, and the if takes a boolean
+condition.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
