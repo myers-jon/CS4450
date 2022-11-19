@@ -25,6 +25,9 @@ booln : booln WS* AND WS* booln
       | booln WS* OR WS* booln
       | NOT WS* booln
       | expression WS* boolop WS* expression
+      | booln WS* boolop WS* expression
+      | expression WS* boolop WS* booln
+      | booln WS* boolop WS* booln
       | BOOL
       | VARNAME
       ;
