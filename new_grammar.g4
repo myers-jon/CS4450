@@ -7,14 +7,14 @@ grammar new_grammar ;
 
 parse : (block)? EOF ;
 
-block : (statement NL+)* statement NL* ;
+block : (statement WS+)* statement WS* ;
 
 statement : ifelseblock
           | operation
           ;
 
-ifelseblock : IF WS* conditional WS* statement
-            | IF WS* conditional WS* statement WS* ELSE WS* statement
+ifelseblock : IF WS* conditional ':' WS* statement
+            | IF WS* conditional ':' WS* statement WS* ELSE ':' WS* statement
             ;
 
 operation : WS* ifelseblock WS*
@@ -104,13 +104,12 @@ GT : '>' ;
 EQUALS : '==' ;
 NTE : '!=' ;
 
-WS : ' ' ;
+WS : ' ' | '\t' | '\n' ;
 DIVASSIGN : '/=' ;
 MULTASSIGN : '*=' ;
 ADDASSIGN : '+=' ;
 SUBASSIGN : '-=' ;
 ASSIGN : '=' ;
-NL : '\n' ;
 ADD : '+' ;
 SUB : '-' ;
 MULT : '*' ;
