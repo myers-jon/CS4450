@@ -21,13 +21,13 @@ operation : WS* ifelseblock WS*
           | WS* assignment WS* 
           ;
 
-assignment : VARNAME WS* boolop WS* expression
-           | VARNAME WS* assop WS* expression 
-           ;
+assignment : VARNAME WS* assop WS* expression ;
 
 
 
-conditional :VARNAME WS* booln WS* conditional*
+conditional :NOT WS* VARNAME WS* boolop WS* ( BOOL | value ) WS* conditional*
+            |NOT WS* VARNAME WS* 
+            |VARNAME WS* booln WS* conditional*
             |VARNAME WS* boolop WS* BOOL WS* conditional*
             |VARNAME WS* boolop WS* value WS* conditional*
             ;
@@ -55,7 +55,6 @@ assop : DIVASSIGN
 
 booln : BOOL WS* AND WS* conditional
 	| BOOL WS* OR WS* conditional
-	| NOT WS* ( BOOL | value ) WS* conditional*
 	| BOOL
         ;
 
