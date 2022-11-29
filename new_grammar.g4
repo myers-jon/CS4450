@@ -11,7 +11,10 @@ block : (statement WS*)* statement WS* ;
 
 statement : operation
           | ifelseblock
+          | whileblock
           ;
+
+whileblock : WHILE WS* booln WS* ':' (WS* statement)+ ;
 
 ifelseblock : IF WS* booln ':' (WS* statement)+
             | IF WS* booln ':' (WS* statement)+ WS* ELSE ':' (WS* statement)+
@@ -77,6 +80,7 @@ arith2 : arith2 WS* MULT WS* arith2
   Lexer rules
 */
 
+WHILE : 'while' ;
 IF : 'if' ;
 ELSE : 'else' ;
 BOOL : 'True' |  'False' ;
