@@ -14,10 +14,12 @@ statement : operation
           | whileblock
           ;
 
-whileblock : WHILE WS* booln WS* ':' (WS* statement)+ ;
+whileblock : WHILE WS* booln WS* COLON (WS* statement)+ ;
 
-ifelseblock : IF WS* booln ':' (WS* statement)+
-            | IF WS* booln ':' (WS* statement)+ WS* ELSE ':' (WS* statement)+
+forblock : FOR WS* VARNAME WS* IN WS* sequence WS* COLON (WS* statement)+ ;
+
+ifelseblock : IF WS* booln COLON (WS* statement)+
+            | IF WS* booln COLON (WS* statement)+ WS* ELSE COLON (WS* statement)+
             ;
 
 operation : assignment WS* ;
@@ -80,6 +82,8 @@ arith2 : arith2 WS* MULT WS* arith2
   Lexer rules
 */
 
+IN : 'in' ;
+FOR : 'for' ;
 WHILE : 'while' ;
 IF : 'if' ;
 ELSE : 'else' ;
@@ -93,6 +97,8 @@ INT : [0-9]+ ;
 FLOAT : [0-9]+ '.' [0-9]* ;
 
 VARNAME : ('_'|'A'..'Z'|'a'..'z') ('_'|'A'..'Z'|'0'..'9'|'a'..'z')* ;
+
+COLON : ':' ;
 
 LTE : '<=' ;
 GTE : '>=' ;
