@@ -76,7 +76,7 @@ arith2 : arith2 WS* MULT WS* arith2
        | value
        ;
 
-
+comment : '#' WS* (VARNAME WS*)*;
 
 /*
   Lexer rules
