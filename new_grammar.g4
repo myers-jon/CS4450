@@ -16,7 +16,14 @@ statement : operation
 
 whileblock : WHILE WS* booln WS* COLON (WS* statement)+ ;
 
-forblock : FOR WS* VARNAME WS* IN WS* sequence WS* COLON (WS* statement)+ ;
+forblock : FOR WS* VARNAME WS* IN WS* sequence WS* COLON (WS* statement)+
+         | FOR WS* VARNAME WS* IN WS* ('range('INT')'|'range('INT','INT')'|'range('INT','INT','INT')') WS* COLON (WS* statement)+ 
+         | FOR WS* VARNAME WS* IN WS* VARNAME WS* COLON (WS* statement)+
+         ;
+
+sequence : '[' WS* (INT|FLOAT|VARNAME) WS* ']'
+         | '[' WS* (WS* (INT|FLOAT|VARNAME) WS* ',' WS*)* WS* (INT|FLOAT|VARNAME) WS* ']'
+         ;
 
 ifelseblock : IF WS* booln COLON (WS* statement)+
             | IF WS* booln COLON (WS* statement)+ WS* ELSE COLON (WS* statement)+
