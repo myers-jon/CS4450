@@ -114,6 +114,19 @@ We have also implemented basic if/else blocks. We have omitted elif as instructe
 exact number of tabs, as instructed by the professor. The if/else blocks can contain multiple lines, and the if takes a boolean
 condition.
 
+## Deliverable 3
+
+WHILE LOOPS
+
+We have implemented while loops. The while loops take a conditional operator/ boolean as an argument. After the conditional another statement can be entered, which may include multiple lines, loops and if/else statments.
+
+FOR LOOPS
+
+We have implemented for loops. The for loops take a list, range, or "x in y" style input as an argument. After the arguments another statment can be entered, which may include multiple lines, loops and if/else statments.
+
+COMMENTS
+
+We have implemented comment functionality. The comment syntax is composed of some number of characters after a '#' symbol.
 
 
 
