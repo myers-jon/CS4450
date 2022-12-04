@@ -12,6 +12,8 @@ block : (statement WS*)* statement WS* ;
 statement : operation
           | ifelseblock
           | whileblock
+          | forblock
+          | comment
           ;
 
 whileblock : WHILE WS* booln WS* COLON (WS* statement)+ ;
@@ -83,7 +85,7 @@ arith2 : arith2 WS* MULT WS* arith2
        | value
        ;
 
-comment : '#' WS* (VARNAME WS*)*;
+comment : '#' WS* ((INT|FLOAT|VARNAME) WS*)* (WS* statement)*;
 
 /*
   Lexer rules
