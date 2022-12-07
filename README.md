@@ -129,23 +129,16 @@ COMMENTS
 We have implemented comment functionality. The comment syntax is composed of some number of characters after a '#' symbol.
 
 
+## Deliverable 4
+
+FUNCTION IMPLEMENTATIONS
+
+We have implemented function implementations with the use of the "def" keyword and having multiple variables taken in as arguments. We have also implemented the "return" keyword for exclusive use within functions.
 
 
+FUNCTION CALLS
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+We implemented function calls, and allowed any expression to be used in the call. Function calls are allowed on their own, and are allowed to be used as a number.
 
 
 
