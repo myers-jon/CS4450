@@ -36,7 +36,7 @@ ifelseblock : IF WS* booln COLON (WS* statement)+
 
 funcdef : DEF WS* VARNAME WS* '(' WS* (VARNAME WS* (',' WS* VARNAME WS*)*)? ')' WS* COLON (WS* statement | return_stmt)+ ;
 
-funccall : VARNAME WS* '(' WS* (value WS* (',' WS* value WS*)*)? ')' ;
+funccall : VARNAME WS* '(' WS* (expression WS* (',' WS* expression WS*)*)? ')' ;
 
 return_stmt : RETURN WS* expression ;
 
