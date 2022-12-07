@@ -34,9 +34,11 @@ ifelseblock : IF WS* booln COLON (WS* statement)+
             ;
 
 
-funcdef : DEF WS* VARNAME WS* '(' WS* (VARNAME WS* (',' WS* VARNAME WS*)*)? ')' WS* COLON (WS* statement)+ ;
+funcdef : DEF WS* VARNAME WS* '(' WS* (VARNAME WS* (',' WS* VARNAME WS*)*)? ')' WS* COLON (WS* statement | return_stmt)+ ;
 
 funccall : VARNAME WS* '(' WS* (value WS* (',' WS* value WS*)*)? ')' ;
+
+return_stmt : RETURN WS* expression ;
 
 operation : assignment WS* ;
 
@@ -109,6 +111,7 @@ BOOL : 'True' |  'False' ;
 AND : 'and' ;
 OR : 'or' ;
 NOT : 'not' ;
+RETURN : 'return' ;
 
 INT : [0-9]+ ;
 
