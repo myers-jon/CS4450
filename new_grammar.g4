@@ -14,6 +14,8 @@ statement : operation
           | whileblock
           | forblock
           | comment
+          | funcdef
+          | funccall
           ;
 
 whileblock : WHILE WS* booln WS* COLON (WS* statement)+ ;
@@ -30,6 +32,13 @@ sequence : '[' WS* (INT|FLOAT|VARNAME) WS* ']'
 ifelseblock : IF WS* booln COLON (WS* statement)+
             | IF WS* booln COLON (WS* statement)+ WS* ELSE COLON (WS* statement)+
             ;
+
+
+funcdef : DEF WS* VARNAME WS* '(' WS* (VARNAME WS* (',' WS* VARNAME WS*)*)? ')' WS* COLON (WS* statement | return_stmt)+ ;
+
+funccall : VARNAME WS* '(' WS* (expression WS* (',' WS* expression WS*)*)? ')' ;
+
+return_stmt : RETURN WS* expression ;
 
 operation : assignment WS* ;
 
@@ -48,6 +57,7 @@ booln : booln WS* AND WS* booln
 
 expression : value
 	   | arith
+           | funccall
            ;
 
 boolop : LTE
@@ -91,6 +101,7 @@ comment : '#' WS* ((INT|FLOAT|VARNAME) WS*)* (WS* statement)*;
   Lexer rules
 */
 
+DEF : 'def' ;
 IN : 'in' ;
 FOR : 'for' ;
 WHILE : 'while' ;
@@ -100,6 +111,7 @@ BOOL : 'True' |  'False' ;
 AND : 'and' ;
 OR : 'or' ;
 NOT : 'not' ;
+RETURN : 'return' ;
 
 INT : [0-9]+ ;
 
