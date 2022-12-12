@@ -140,7 +140,11 @@ FUNCTION CALLS
 
 We implemented function calls, and allowed any expression to be used in the call. Function calls are allowed on their own, and are allowed to be used as a number.
 
+## Bonus
 
+BONUS
+
+We implemented a workflow that receives the tree output of the toString function and creates a tree_visualization.gv.pdf file. This file contains a visualization of the output tree.
 
 
 
