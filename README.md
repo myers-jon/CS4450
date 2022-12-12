@@ -146,5 +146,7 @@ BONUS
 
 We implemented a workflow that receives the tree output of the toString function and creates a tree_visualization.gv.pdf file. This file contains a visualization of the output tree.
 
-
+NOTE: To get graphviz you need to run the following commands...
+$ sudo apt-get install graphviz
+$ pip install graphviz
 
