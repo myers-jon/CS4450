@@ -89,7 +89,7 @@ def r_get_nodes(s, parent = 'a', node = None, depth = 0):
                 node.edge(parent, self_val)
 
     if depth == 0:
-        node.render('doctest-output/round-table.gv', view=True)
+        node.render('doctest-output/tree_visualization.gv', view=True)
 
 
 def get_nodes(s):
