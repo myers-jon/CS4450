@@ -66,13 +66,7 @@ def r_get_nodes(s, parent = 'a', node = None, depth = 0):
     types = rets[1]
     length = len(arr)
 
-    print("---------------------")
-    print(arr)
-    print("---------------------")
-
-
     if depth == 0:
-        print("initializing")
         node = graphviz.Digraph(comment = "parse tree visualization")
         node.node('a', "root")
         r_get_nodes(arr[0], 'a', node, 1)
@@ -84,23 +78,18 @@ def r_get_nodes(s, parent = 'a', node = None, depth = 0):
             if i < length-1:
                 # if next is a parenthesised
                 if types[i+1] == 1:
-                    print("expanding")
                     node.node(self_val, arr[i])
                     node.edge(parent, self_val)
                     r_get_nodes(arr[i+1], self_val, node, 1)
                 else:
-                    print("adding")
                     node.node(self_val, arr[i])
                     node.edge(parent, self_val)
             else:
-                print("adding last")
                 node.node(self_val, arr[i])
                 node.edge(parent, self_val)
 
     if depth == 0:
         node.render('doctest-output/round-table.gv', view=True)
-        #print(node)
-
 
 
 def get_nodes(s):
